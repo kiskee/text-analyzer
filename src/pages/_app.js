@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
         />
         <meta name="robots" content="all" />
       </Head>
-      <div className="py-12 px-16 bg-stone-800">
+      <div className="py-12 px-16 bg-indigo-950">
         <Component {...pageProps} />
       </div>
       
