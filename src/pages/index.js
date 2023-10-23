@@ -67,36 +67,42 @@ export default function Home() {
       {data && (
         <>
           <div className="grid grid-cols-3 justify-items-center gap-4">
-            <div class="block max-w-[18rem] rounded-lg bg-primary shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-center">
-              <div class="border-b-2 border-[#0000002d] px-6 py-3 text-white dark:text-neutral-50">
+            <div className="block max-w-[18rem] rounded-lg bg-primary shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-center">
+              <div className="border-b-2 border-[#0000002d] px-6 py-3 text-white dark:text-neutral-50">
                 Language
               </div>
-              <div class="p-6">
-                <h5 class="mb-2 text-xl font-medium leading-tight text-white dark:text-neutral-50">
+              <div className="p-6">
+                <h5 className="mb-2 text-xl font-medium leading-tight text-white dark:text-neutral-50">
                   {data.language.Languages[0].LanguageCode}
                 </h5>
               </div>
             </div>
-            <div class="block max-w-[18rem] rounded-lg bg-primary shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-center">
-              <div class="border-b-2 border-[#0000002d] px-6 py-3 text-white dark:text-neutral-50">
+            <div className="block max-w-[18rem] rounded-lg bg-primary shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-center">
+              <div className="border-b-2 border-[#0000002d] px-6 py-3 text-white dark:text-neutral-50">
                 Sentiment
               </div>
-              <div class="p-6">
-                <h5 class="mb-2 text-xl font-medium leading-tight text-white dark:text-neutral-50">
+              <div className="p-6">
+                <h5 className="mb-2 text-xl font-medium leading-tight text-white dark:text-neutral-50">
                   {data.result.Sentiment}
                 </h5>
               </div>
             </div>
-            <div class="block max-w-[18rem] rounded-lg bg-primary shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-center">
-              <div class="border-b-2 border-[#0000002d] px-6 py-3 text-white dark:text-neutral-50">
+            <div className="block max-w-[18rem] rounded-lg bg-primary shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-center">
+              <div className="border-b-2 border-[#0000002d] px-6 py-3 text-white dark:text-neutral-50">
                 Sentiment Status
               </div>
-              <div class="p-6">
+              <div className="p-6">
                 <ul>
-                  <li>Mixed: {data.result.SentimentScore.Mixed}</li>
-                  <li>Negative: {data.result.SentimentScore.Negative}</li>
-                  <li>Neutral: {data.result.SentimentScore.Neutral}</li>
-                  <li>Positive: {data.result.SentimentScore.Positive}</li>
+                  <li>Mixed: {data.result.SentimentScore.Mixed.toFixed(2)}</li>
+                  <li>
+                    Negative: {data.result.SentimentScore.Negative.toFixed(2)}
+                  </li>
+                  <li>
+                    Neutral: {data.result.SentimentScore.Neutral.toFixed(2)}
+                  </li>
+                  <li>
+                    Positive: {data.result.SentimentScore.Positive.toFixed(2)}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -105,18 +111,18 @@ export default function Home() {
             data-te-spy="scroll"
             data-te-target="#scrollspy1"
             data-te-offset="200"
-            class="relative h-[38rem]  overflow-auto"
+            className="relative h-[38rem]  overflow-auto"
           >
-            <table class="min-w-full text-center text-sm font-light mt-4">
-              <thead class="border-b bg-neutral-50 font-medium dark:border-neutral-500 dark:text-neutral-800 ">
+            <table className="min-w-full text-center text-sm font-light mt-4">
+              <thead className="border-b bg-neutral-50 font-medium dark:border-neutral-500 dark:text-neutral-800 ">
                 <tr>
-                  <th scope="col" class=" px-6 py-4">
+                  <th scope="col" className=" px-6 py-4">
                     #
                   </th>
-                  <th scope="col" class=" px-6 py-4">
+                  <th scope="col" className=" px-6 py-4">
                     Word
                   </th>
-                  <th scope="col" class=" px-6 py-4">
+                  <th scope="col" className=" px-6 py-4">
                     Tag
                   </th>
                 </tr>
@@ -124,14 +130,16 @@ export default function Home() {
               <tbody>
                 {data.sintax.SyntaxTokens.map((token, index) => (
                   <tr
-                    class="border-b dark:border-neutral-500 text-white"
+                    className="border-b dark:border-neutral-500 text-white"
                     key={index}
                   >
-                    <td class="whitespace-nowrap  px-6 py-4 font-medium">
+                    <td className="whitespace-nowrap  px-6 py-4 font-medium">
                       {index}
                     </td>
-                    <td class="whitespace-nowrap  px-6 py-4">{token.Text}</td>
-                    <td class="whitespace-nowrap  px-6 py-4">
+                    <td className="whitespace-nowrap  px-6 py-4">
+                      {token.Text}
+                    </td>
+                    <td className="whitespace-nowrap  px-6 py-4">
                       {token.PartOfSpeech.Tag}
                     </td>
                   </tr>
@@ -139,15 +147,46 @@ export default function Home() {
               </tbody>
             </table>
           </div>
-          <h1 className="text-2xl text-indigo-600">key Phrases</h1>
-          <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-            {data.keyPhrases.KeyPhrases.map((keyPrahs, index)=> (
-              <li class="w-full px-4 py-2 border-b border-gray-200 " key={index}>
-              {keyPrahs.Text}
-            </li>
-            ))}
-          </ul>
-          
+          <div className="flex justify-center gap-8">
+            {data.keyPhrases.KeyPhrases.length > 0 && (
+              <>
+                <div>
+                  <h1 className="text-3xl text-indigo-600 mt-8 font-semibold">
+                    key Phrases:
+                  </h1>
+                  <ul class="w-48 text-sm font-medium text-gray-900 bg-indigo-800 border border-gray-200 rounded-lg mt-4">
+                    {data.keyPhrases.KeyPhrases.map((keyPrahs, index) => (
+                      <li
+                        className="w-full px-4 py-2 border text-white  border-gray-200 "
+                        key={index}
+                      >
+                        {keyPrahs.Text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
+            )}
+            {data.response.Entities.length > 0 && (
+              <>
+                <div>
+                  <h1 className="text-3xl text-indigo-600 mt-8 font-semibold">
+                    Entities:
+                  </h1>
+                  <ul className="w-48 text-sm font-medium text-gray-900 bg-indigo-800 border border-gray-200 rounded-lg mt-4">
+                    {data.response.Entities.map((entiti, index) => (
+                      <li
+                        className="w-full px-4 py-2 border text-white  border-gray-200 "
+                        key={index}
+                      >
+                        {entiti.Text} = {entiti.Type}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
+            )}
+          </div>
         </>
       )}
     </>
